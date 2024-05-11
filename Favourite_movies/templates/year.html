@@ -1,0 +1,44 @@
+{% extends "./layout.html" %}
+{% block body %}
+    <div class="container">
+        <h2> {{ year }}'s Movies </h2>
+        <div class="movies">
+            {% for movie in movies %}
+                <a href="{% url 'movie' movie.id %}" class="movie">
+                    <div class="movie-inner">
+                        <div class="movie-front">
+                            <div class="movie-poster">
+                                <img src="{{ movie.poster.url }}" alt={{ movie.name }}>
+                            </div>
+                        </div>
+                        <div class="movie-back">
+                            <div class="movie-poster">
+                                <img src="{{ movie.poster.url }}" alt={{ movie.name }}>
+                            </div>
+                            <div class="movie-details">
+                                <div class="movie-name">
+                                    {{ movie.name }}
+                                </div>
+                                <div class="movie-year">
+                                    {{ movie.year }}
+                                </div>
+                                <div class="movie-genres">
+                                    {% for genre in movie.genres.all %}
+                                            <div>{{ genre }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </a>
+                <!-- <form action="{% url 'delete_movie' movie.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form> -->
+            {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}

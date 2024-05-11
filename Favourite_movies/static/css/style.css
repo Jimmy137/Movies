@@ -1,0 +1,253 @@
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 100;
+    src: url('../fonts/Poppins-Thin.woff') format('woff')
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 200;
+    src: url('../fonts/Poppins-ExtraLight.woff') format('woff')
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 300;
+    src: url('../fonts/Poppins-Light.woff') format('woff')
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 400;
+    src: url('../fonts/Poppins-Regular.woff') format('woff')
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 500;
+    src: url('../fonts/Poppins-Medium.woff') format('woff')
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 600;
+    src: url('../fonts/Poppins-SemiBold.woff') format('woff')
+}
+
+body{
+    padding: 0 50px;
+    margin: 0 auto;
+    background-color: #725a99;
+    background: linear-gradient(to bottom, #614385 , #516395);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins";
+}
+.rotate{
+    transform-box: fill-box;
+    transform-origin: center center;
+    animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.home-link{
+    padding-right: 50px;
+}
+.container{
+    width: 100%;
+    text-align: center;
+}
+.movies{
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.movie{
+    width: 20%;
+    height: 350px;
+    margin-bottom: 20px;
+    display: flex;    
+    position: relative;
+    perspective: 1000px;
+}
+
+.movie-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 2.8s;
+    transform-style: preserve-3d;
+}
+.movie:hover .movie-inner {
+    transform: rotateY(180deg);
+}
+.movie-front, .movie-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+.movie-back {
+    transform: rotateY(180deg);
+}
+.movie-back .movie-poster img {
+    object-fit: none;
+}
+.movie-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    padding: 60% 5px 50px 5px;
+    box-sizing: border-box;
+}
+.movie-name{
+    font-size: 24px;
+    font-weight: 500;
+}
+.movie-year{
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+.movie-genres{
+    font-size: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.movie-poster {
+    width: 100%;
+}
+.movie-poster img{
+    width: 100%;
+    height: 350px;
+    /* object-fit: contain; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.form-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.form-container input{
+    padding: 5px 10px;
+    font-size: 16px;
+    
+}
+.form-container form {
+    display: flex;
+    gap: 10px;
+    background-color: aqua;
+}
+
+.background-img{
+    position: absolute;
+    z-index: -999;
+    top: 0;
+    left: 0;
+    object-fit: scale-down;
+    width: 100%;
+}
+.bg-container{
+    display: inline-block;
+}
+.bg-container:before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -100; 
+}
+
+/* movie page */
+.movie_page{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    margin-bottom: 50px;
+}
+.movie_page_left{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.movie_page_first_line{
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+.movie_page_name{
+    font-size: 48px;
+    font-weight: 600;
+}
+.movie_page_year{
+    font-size: 18px;
+    font-weight: 400;
+}
+.movie_page_director{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.movie_page_director_name{
+    font-size: 22px;
+    font-weight: 400;
+}
+.movie_page_story{
+    text-align: left;
+    font-size: 18px;
+    font-weight: 300;
+}
+.movie_page_genres{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 5px;
+   
+}
+.movie_page_right{
+    width: 30%;
+}
+.movie_page_right img{
+    width: 100%;
+}
+.movie_trailer {
+    width: 100%;
+    height: 520px;
+}
+
+/* .movie_page_genres a{
+    color: #f5a5a9;
+} */
+
+

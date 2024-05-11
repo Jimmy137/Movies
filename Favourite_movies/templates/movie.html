@@ -1,0 +1,61 @@
+{% extends "./layout.html" %}
+{% block body %}
+    <div class="container">
+        <div class="movie_page">
+            <div class="movie_page_left">
+                <div class="movie_page_first_line">
+                    <div class="movie_page_name"> {{ movie.name }} </div>
+                    <div class="movie_page_year">
+                        <a href="{% url 'year' movie.year %}">{{movie.year}}</a>
+                    </div>
+                </div>
+                <div class="movie_page_director">
+                    <a href="{% url 'director' movie.director.id %}" class="movie_page_director_name">
+                        {{movie.director.name}} 
+                    </a>
+                </div>
+                <p class="movie_page_story">
+                    {{movie.story}}
+                </p>
+                <div class="movie_page_genres">
+                    {% for genre in genres %}
+                        <a href="{% url 'genre' genre.id %}">
+                            {{genre.name}}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="movie_page_right">
+                <img src="{{movie.poster.url}}" alt="{{movie.name}}">
+            </div>
+
+            
+            
+            
+            
+            
+        </div>
+        {% if embed_url %}
+            <iframe class="movie_trailer" src="{{ embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% endif %}
+        <form action="{% url 'edit_movie' movie.id %}" method='POST'>
+            {% csrf_token %}
+            <input type="text" name="movie" value="{{ movie.name }}">
+            <input type="number" name="year" placeholder="year" value="{{ movie.year }}">
+            <select name="director" id="directors">
+                <option disabled>Director</option>
+                {% for director in all_directors %}
+                    <option value="{{ director.id }}">{{ director.name }}</option>
+                {% endfor %}
+            </select>
+            <select name="genre" id="genres" multiple>
+                <option disabled>Genre</option>
+                {% for genre in all_genres %}
+                    <option value="{{ genre.id }}">{{ genre.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit">
+        </form>
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "./layout.html" %}
+{% block body %}
+    <div class="container">
+        <h2> {{ director }}'s Movies </h2>
+        {% for movie in movies %}
+            <a href="{% url 'movie' movie.id %}">
+                <h2>{{ movie }}</h2>
+            </a>
+        {% endfor %}
+    </div>
+    
+{% endblock %}
