@@ -17,7 +17,7 @@ urlpatterns = [
     path("add_genre", views.add_genre, name="add_genre"),
     path("directors/<int:director_id>", views.director, name="director"),
     path("add_director", views.add_director, name="add_director"),
-    path("movie/<int:year>", views.year, name="year"),
+    path("movies/y/<int:year>", views.year, name="year"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

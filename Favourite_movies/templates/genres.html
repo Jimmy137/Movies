@@ -1,11 +1,15 @@
 {% extends "./layout.html" %}
 {% block body %}
     <div class="container">
-        {% for genre in genres %}
-        <a href="{% url 'genre' genre.id %}">
-            <h2>{{ genre }}</h2>
-        </a>
-        {% endfor %}
+        <div class="genres">
+            {% for genre in genres %}
+                <a href="{% url 'genre' genre.id %}" class="genre" id="{{genre.name}}">
+                    <span>{{ genre }}</span>
+                </a>
+            {% endfor %}
+        </div>
+        
+        
         <div class="form-container">
             <h2>Add Genre:</h2>
             <form action="{% url 'add_genre' %}" method='POST'>

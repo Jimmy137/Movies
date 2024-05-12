@@ -32,13 +32,62 @@
 body{
     padding: 0 50px;
     margin: 0 auto;
-    background-color: #725a99;
+    min-height: 100vh;
     background: linear-gradient(to bottom, #614385 , #516395);
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-family: "Poppins";
+}
+header{
+    width: calc(100% + 100px);
+}
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* padding: 0 20px;
+    box-shadow: 5px 5px 5px white; */
+}
+.nav-bottom {
+    box-sizing: border-box;
+    background: aliceblue;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.nav-bottom a {
+    padding: 10px 20px;
+    font-size: 26px;
+    line-height: 50px;
+    color: #5e4a89;
+    position: relative;
+    transition: color 0.5s;
+    z-index: 1000;
+}
+.nav-bottom a:hover{
+    color: aliceblue;
+}
+.nav-bottom a::before {
+    content: '';
+    background-color: #5f4787;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    z-index: -2;
+    transition: width 0.5s;
+}
+.nav-bottom a:hover::before{
+    width: 100%;
+}
+.nav-selected{
+    background-color: #5f4787;
+    color: aliceblue !important;
 }
 .rotate{
     transform-box: fill-box;
@@ -53,6 +102,29 @@ body{
         transform: rotate(360deg);
     }
 }
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: aliceblue;
+    min-height: 200px;
+    width: 100%;
+}
+.footer-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: -50px;
+}
+.footer-logo{
+    transform: scale(.8);
+}
+.footer-icons{
+    display: flex;
+    gap: 20px;
+}
+
+
 .home-link{
     padding-right: 50px;
 }
@@ -81,7 +153,7 @@ body{
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 2.8s;
+    transition: transform 2s;
     transform-style: preserve-3d;
 }
 .movie:hover .movie-inner {
@@ -188,11 +260,17 @@ a{
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 50px 0;
     margin-bottom: 50px;
 }
+.movie_page a {
+    transition: color .5s;
+}
+.movie_page a:hover {
+    color: rgba(240, 248, 255, 0.473);
+}
 .movie_page_left{
-    width: 60%;
+    width: 63%;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -201,7 +279,6 @@ a{
     display: flex;
     align-items: baseline;
     gap: 20px;
-    margin-bottom: 10px;
 }
 .movie_page_name{
     font-size: 48px;
@@ -236,18 +313,139 @@ a{
    
 }
 .movie_page_right{
-    width: 30%;
+    width: 30%;    
 }
 .movie_page_right img{
     width: 100%;
+    box-shadow: rgb(255 255 255 / 40%) 0px 7px 29px 0px;
 }
 .movie_trailer {
     width: 100%;
     height: 520px;
 }
 
-/* .movie_page_genres a{
-    color: #f5a5a9;
-} */
-
+/* genres page */
+.genres{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 0;
+}
+.genre{
+    padding: 10px 25px;
+    width: 18%;
+    text-align: center;
+    background-color: yellowgreen;
+    font-size: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 1s;
+    position: relative;
+}
+.genre span {
+    position: relative;
+    z-index: 100;
+}
+.genre::before{
+    content: '';
+    background-color: rgba(0, 0, 0, 0.07);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 0;
+    border-radius: 8px;
+    transition: opacity 1s;
+}
+.genre:hover::before{
+    opacity: 1;
+}
+#Drama{
+    background: linear-gradient(45deg, #44a2d4, transparent);
+}
+#Drama:hover{
+    background:  #44a2d4;
+}
+#Thriller{
+    background: linear-gradient(45deg, #ff4747, transparent);
+}
+#Thriller:hover{
+    background:  #ff4747;
+}
+#Action{
+    background: linear-gradient(45deg, #FF4500 , transparent);
+}
+#Action:hover{
+    background:  #FF4500 ;
+}
+#Romance{
+    background: linear-gradient(45deg, #FF69B4, transparent);
+}
+#Romance:hover{
+    background:  #FF69B4;
+}
+#Comedy{
+    background: linear-gradient(45deg, #fddd32 , transparent);
+}
+#Comedy:hover{
+    background:  #fddd32 ;
+}
+#Sci-Fi{
+    background: linear-gradient(45deg, #00FFFF  , transparent);
+}
+#Sci-Fi:hover{
+    background:  #00FFFF  ;
+}
+#Horror{
+    background: linear-gradient(45deg, #8B008B  , transparent);
+}
+#Horror:hover{
+    background:  #8B008B  ;
+}
+#Psychological{
+    background: linear-gradient(45deg, #98d62e  , transparent);
+}
+#Psychological:hover{
+    background:  #98d62e  ;
+}
+#Crime{
+    background: linear-gradient(45deg, #ee8b19 , transparent);
+}
+#Crime:hover{
+    background:  #ee8b19 ;
+}
+#Mystery{
+    background: linear-gradient(45deg, #4B0082  , transparent);
+}
+#Mystery:hover{
+    background:  #4B0082  ;
+}
+#Adventure{
+    background: linear-gradient(45deg, #77ff77   , transparent);
+}
+#Adventure:hover{
+    background:  #77ff77   ;
+}
+#War{
+    background: linear-gradient(45deg, #c6c6c6   , transparent);
+}
+#War:hover{
+    background:  #c6c6c6   ;
+}
+#Noir{
+    background: linear-gradient(45deg, #000000  , transparent);
+}
+#Noir:hover{
+    background:  #000000  ;
+}
+#History{
+    background: linear-gradient(45deg, #8B4513   , transparent);
+}
+#History:hover{
+    background:  #8B4513   ;
+}
 
