@@ -1,12 +1,43 @@
 {% extends "./layout.html" %}
+{% load static %}
 {% block body %}
     <div class="container">
-        <h2> {{ director }}'s Movies </h2>
-        {% for movie in movies %}
-            <a href="{% url 'movie' movie.id %}">
-                <h2>{{ movie }}</h2>
-            </a>
-        {% endfor %}
+        <div class="director-page">
+            <div class="director-page-left">
+                <img src="{{ director.image.url }}" alt={{ director.name }}>
+            </div>
+            <div class="director-page-right">
+                <div class="director-page-name">{{director.name}}<span>'s movies</span></div>
+                <div class="movies-carousel">
+                    {% if movies|length > 1 %}
+                    <div class="movies-carousel-prev" data-slide="prev">
+                        <span class="movies-carousel-icon" aria-hidden="true">&lt;</span>
+                    </div>
+                    {% endif %}
+                    <div class="carousel-inner">
+                        {% for movie in movies %}
+                            <a href="{% url 'movie' movie.id %}" class="movies-carousel-movie">
+                                <img src="{{ movie.poster.url }}" alt={{ movie.name }}>
+                                <div class="movies-carousel-movie-details">
+                                    <div class="movies-carousel-movie-name" >{{ movie.name }}</div>
+                                    <div class="movies-carousel-movie-year" >{{ movie.year }}</div>
+                                </div>
+                                
+                            </a>
+                        {% endfor %}
+                    </div>
+                    {% if movies|length > 1 %}
+                    <div class="movies-carousel-next" data-slide="next">
+                        <span class="movies-carousel-icon" aria-hidden="true">&gt;</span>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+          
     </div>
     
 {% endblock %}

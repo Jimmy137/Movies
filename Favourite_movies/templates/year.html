@@ -1,7 +1,9 @@
 {% extends "./layout.html" %}
 {% block body %}
     <div class="container">
-        <h2> {{ year }}'s Movies </h2>
+        <div class="page-title"> 
+            <strong>{{ year }}</strong>'s Movies 
+        </div>
         <div class="movies">
             {% for movie in movies %}
                 <a href="{% url 'movie' movie.id %}" class="movie">

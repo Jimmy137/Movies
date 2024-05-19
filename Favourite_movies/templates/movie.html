@@ -4,7 +4,7 @@
         <div class="movie_page">
             <div class="movie_page_left">
                 <div class="movie_page_first_line">
-                    <div class="movie_page_name"> {{ movie.name }} </div>
+                    <div class="movie_page_name"> {{ movie.name.title }} </div>
                     <div class="movie_page_year">
                         <a href="{% url 'year' movie.year %}">{{movie.year}}</a>
                     </div>

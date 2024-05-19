@@ -69,9 +69,7 @@ def edit_movie(request, movie_id):
         m.name = movie_name
         m.year = year
         m.director = director
-        
-        print('mmmmmmmmm', m, movie_name)
-        
+                
         genres = request.POST.getlist('genre')
         
         for g in genres:
@@ -91,7 +89,7 @@ def genres(request):
 
 def genre(request, genre_id):
     genre = Genre.objects.get(id=genre_id)
-    movies = genre.movies.all()
+    movies = genre.movies.all().order_by('year')
     return render(request, "genre.html", {
         "genre": genre,
         "movies": movies
@@ -105,13 +103,14 @@ def add_genre(request):
         return HttpResponseRedirect(reverse("genres"))
     
 def directors(request):
+
     return render(request, "directors.html", {
-        "directors": Director.objects.all()
+        "directors": Director.objects.all().order_by('name')
     })
 
 def director(request, director_id):
     director = Director.objects.get(id=director_id)
-    movies = director.movies.all()
+    movies = director.movies.all().order_by('year')
     return render(request, "director.html", {
         "director": director,
         "movies": movies

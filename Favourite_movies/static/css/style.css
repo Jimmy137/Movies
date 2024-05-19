@@ -54,7 +54,7 @@ header{
 }
 .nav-bottom {
     box-sizing: border-box;
-    background: aliceblue;
+    background: white;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -69,7 +69,7 @@ header{
     z-index: 1000;
 }
 .nav-bottom a:hover{
-    color: aliceblue;
+    color: white;
 }
 .nav-bottom a::before {
     content: '';
@@ -87,7 +87,7 @@ header{
 }
 .nav-selected{
     background-color: #5f4787;
-    color: aliceblue !important;
+    color: white !important;
 }
 .rotate{
     transform-box: fill-box;
@@ -102,11 +102,21 @@ header{
         transform: rotate(360deg);
     }
 }
+.page-title{
+    font-size: 36px;
+    color: white;
+    font-weight: 500;
+    padding: 30px 0 10px 0;
+}
+.page-title span{
+    font-size: 30px;
+    font-weight: 300;
+}
 footer {
     display: flex;
     justify-content: space-between;
     padding: 10px 50px;
-    background-color: aliceblue;
+    background-color: white;
     min-height: 200px;
     width: 100%;
 }
@@ -137,10 +147,11 @@ footer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 .movie{
-    width: 20%;
+    /* width: 20%; */
+    min-width: 230px;
     height: 350px;
     margin-bottom: 20px;
     display: flex;    
@@ -213,7 +224,7 @@ footer {
 }
 a{
     text-decoration: none;
-    color: aliceblue;
+    color: white;
 }
 
 .form-container{
@@ -279,10 +290,13 @@ a{
     display: flex;
     align-items: baseline;
     gap: 20px;
+    margin-bottom: 10px;
 }
 .movie_page_name{
     font-size: 48px;
     font-weight: 600;
+    text-align: left;
+    line-height: 1;
 }
 .movie_page_year{
     font-size: 18px;
@@ -323,7 +337,140 @@ a{
     width: 100%;
     height: 520px;
 }
-
+/* directors page */
+.directors {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.director{
+    /* width: 20%; */
+    min-width: 230px;
+    /* height: 350px; */
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+.director-img-container{
+    width: 100%;
+}
+.director-img-container img{
+    width: 250px;
+    /* max-width: 200px; */
+    object-fit: cover;
+    height: 250px;
+    border-radius: 50%;
+}
+.director-name{
+    font-size: 20px;
+    font-weight: 500;
+}
+.director:hover {
+    opacity: 0.5;
+}
+/* director page */
+.director-page{
+    color: white;
+    display: flex;
+    gap: 30px;
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+.director-page-left{
+    width: 30%;
+}
+.director-page-left img{
+    width: 100%;
+    object-fit: cover;
+    height: 450px;
+    border-radius: 2%;
+}
+.director-page-right{
+    width: 63%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 112px;
+}
+.director-page-name{
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0 27px;
+}
+.director-page-name span{
+    font-weight: 300;
+    font-size: 30px;
+}
+.director-page-movies{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.director-page-movie{
+    width: 200px;
+    height: 250px;
+    margin-bottom: 20px;
+    display: flex;
+    position: relative;
+    perspective: 1000px;
+    min-width: auto;
+}
+.director-page-movie-poster img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+.movie-back .director-page-movie-poster img {
+    object-fit: none;
+}
+.director-page-movie-details{
+    
+    padding: 30% 5px 5px;
+}
+.carousel {
+    position: relative;
+  }
+  
+  .carousel-inner {
+    display: flex;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 200px;
+  }
+  
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .carousel-control-prev {
+    left: 0;
+  }
+  
+  .carousel-control-next {
+    right: 0;
+  }
+  
 /* genres page */
 .genres{
     display: flex;
@@ -370,6 +517,14 @@ a{
 #Drama:hover{
     background:  #44a2d4;
 }
+.page-title#Drama{
+    /* background: linear-gradient(to bottom, #44a2d4, transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; */
+    color:  #44a2d4;
+    background: none;
+} 
 #Thriller{
     background: linear-gradient(45deg, #ff4747, transparent);
 }
@@ -447,5 +602,75 @@ a{
 }
 #History:hover{
     background:  #8B4513   ;
+}
+
+.movies-carousel{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 0 30px;
+}
+.movies-carousel-movie{
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    opacity: .3;
+    pointer-events: none;
+    transition: all 1s;
+}
+.movies-carousel-movie-details{
+    display: none;
+    transition: all 1s;
+}
+
+.movies-carousel-movie img{
+    object-fit: cover;
+    height: 300px;
+}
+/* .selected img{
+    object-fit: none;
+    transition: all 1s;
+} */
+.movies-carousel-prev,
+.movies-carousel-next {
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    top: 200px;
+    transition: opacity 0.5s;
+}
+.movies-carousel-prev{
+    left: 0px;
+}
+.movies-carousel-next{
+    right: 0px;
+}
+.movies-carousel-prev:hover, .movies-carousel-next:hover{
+    opacity: 0.7;
+}
+
+.selected{
+    width: 200px;
+    opacity: 1;
+    pointer-events: all;
+}
+.selected .movies-carousel-movie-details{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.movies-carousel-movie-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.movies-carousel-movie-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.movies-carousel-movie-year{
+    font-size: 18px;
+    font-weight: 200;
 }
 

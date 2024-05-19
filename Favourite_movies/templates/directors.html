@@ -1,19 +1,62 @@
 {% extends "./layout.html" %}
 {% block body %}
     <div class="container">
-        {% for director in directors %}
-            <a href="{% url 'director' director.id %}">
-                <h2>{{ director }}</h2>
-            </a>
-        {% endfor %}
-        <div class="form-container">
+        <div class="directors">
+            {% for director in directors %}
+                <a href="{% url 'director' director.id %}" class="director">
+                    <div class="director-img-container">
+                        <img src="{{ director.image.url }}" alt={{ director.name }}>
+                    </div>
+                    
+                    <div class="director-name">{{ director.name }}</div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="movies">
+            {% for movie in movies %}
+                <a href="{% url 'movie' movie.id %}" class="movie">
+                    <div class="movie-inner">
+                        <div class="movie-front">
+                            <div class="movie-poster">
+                                <img src="{{ movie.poster.url }}" alt={{ movie.name }}>
+                            </div>
+                        </div>
+                        <div class="movie-back">
+                            <div class="movie-poster">
+                                <img src="{{ movie.poster.url }}" alt={{ movie.name }}>
+                            </div>
+                            <div class="movie-details">
+                                <div class="movie-name">
+                                    {{ movie.name }}
+                                </div>
+                                <div class="movie-year">
+                                    {{ movie.year }}
+                                </div>
+                                <div class="movie-genres">
+                                    {% for genre in movie.genres.all %}
+                                            <div>{{ genre }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </a>
+                <!-- <form action="{% url 'delete_movie' movie.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form> -->
+            {% endfor %}
+        </div>
+        {% comment %} <div class="form-container">
             <h2>Add Director:</h2>
             <form action="{% url 'add_director' %}" method='POST'>
                 {% csrf_token %}
                 <input type="text" name="director">
                 <input type="submit">
             </form>
-        </div>
+        </div> {% endcomment %}
     </div>
     
 {% endblock %}
